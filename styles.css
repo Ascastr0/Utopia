@@ -61,23 +61,33 @@ footer p {
 
 @media (max-width: 768px) {
     header {
-        height: 60px;
+        height: auto; 
+        padding: 10px; 
     }
 
     header img {
-        height: 40px;
+        height: 40px; 
+    }
+
+    nav {
+        display: flex; 
+        flex-direction: column; 
     }
 
     nav a {
         font-size: 1em;
-        margin: 0 10px;
+        margin: 5px 0;
     }
 
     section h2 {
-        font-size: 2em;
+        font-size: 1.5em; 
     }
 
     section p {
-        font-size: 1em;
+        font-size: 0.9em; 
+    }
+
+    footer {
+        font-size: 0.9em; 
     }
 }
