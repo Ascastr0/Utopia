@@ -76,6 +76,7 @@ nav a:hover {
     color: #1F006A;
 }
 
+/* Boton */
 .btn {
     background-color: #FF6A3D; /* Naranja suave para el botón */
     color: #fff;
@@ -94,7 +95,7 @@ footer {
     background: #1F006A;
     padding: 20px;
     text-align: center;
-    margin-top: auto;
+    margin-top: 40px;
 }
 
 footer p {
