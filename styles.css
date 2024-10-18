@@ -37,16 +37,40 @@ header img {
     height: 170px;
 }
 
-nav a {
+
+li {
+    display: inline-block;
+    position: relative;
     color: #1F006A;
-    text-decoration: none;
-    margin: 0 15px;
+    font-family: 'Segoe UI', sans-serif;
     font-size: 1.1em;
     font-weight: bold;
+    margin: 0 15px;
+    cursor: pointer;
+    transition: 0.4s all ease;
 }
 
-nav a:hover {
-    text-decoration: underline;
+li:hover {
+    color: #A300BF;
+    transition: 0,4s all ease;
+}
+
+li::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: #FC5B06;
+    transform-origin: bottom right;
+    transition: transform 0.3s ease-out;
+}
+
+li:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
 }
 
 .text-gradient {
