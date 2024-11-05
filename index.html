@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,44 +7,172 @@
     <title>UTOPIA - Agencia de Publicidad Digital</title>
     <link rel="stylesheet" href="styles.css">
     <script src="scripts.js" defer></script>
+    <script src="cards.js" defer></script>
+    <script src="valid.js" defer></script>
 </head>
 <body>
     <header>
         <a href="index.html">
-            <img src="https://ascastro.sirv.com/Images/Utopia%20Logo.png" alt="Logo UTOPIA">
+            <img src="https://ascastro.sirv.com/Images/Utopia%20Logo.png" alt="Utopia Planet">
         </a>
         <nav>
-            <a href="Utopia-web-page-quienes-somos.html"><li>Quiénes Somos</li></a>
-            <a href="Utopia-web-page-servicios.html"><li>Servicios</li></a>
-            <a href="Utopia-web-page-contacto.html"><li>Contacto</li></a>
+            <a href="#quienes-somos"><li>Quiénes Somos</li></a>
+            <a href="#servicios"><li>Servicios</li></a>
+            <a href="#contacto"><li>Contacto</li></a>
         </nav>
     </header>
-
     <section id="inicio">
+        <br><br>
         <div class="franja-inicio">
             <div class="franja-content">
-                <h1>Conoce a <span class="text-gradient">UTOPIA</span></h1>
+                <h1>Conoce a <span class="text-gradient">Utopia</span></h1>
                 <p>Agencia de publicidad digital, donde las ideas<br>cobran vida.</p>
-                <h2>Con nosotros, encontrarás un lugar donde tus ambiciones como empresa<br>alcanzan su máximo potencial.<br><br> Nacimos de la necesidad de transformar los conceptos más abstractos y<br>confusos que surgen en nuestra mente, para llevarlos al ámbito donde toda<br>esa exploración se transmita a tu cliente,<br><span class="text-gradient">tu imagen.</span></h2>
-                <a href="Utopia-web-page-servicios.html" class="btn">Catalogo de <b>Servicios</b></a>
+                <p class="dos">
+                    Con nosotros, encontrarás un lugar donde tus ambiciones como empresa<br>alcanzan 
+                    su máximo potencial.<br><br> Nacimos de la necesidad de transformar los conceptos 
+                    más abstractos y<br>confusos que surgen en nuestra mente, para llevarlos al ámbito 
+                    donde toda<br>esa exploración se transmita a tu cliente,<br>
+                    <span class="text-gradient">tu imagen</span>.
+                </p>
             </div>
-            
             <div class="transparent-box">
+                <img src="https://ascastro.sirv.com/Images/Utopia%20Planet.png">
+                <div class="login-section">
+                    <form>
+                        <h2>Login</h2>
+                        <div class="inputbox">
+                            <ion-icon name="mail-outline"></ion-icon>
+                            <input type="email" required id="email" placeholder=" ">
+                            <label for="">Email</label>
+                        </div>
+                        <div class="inputbox">
+                            <ion-icon name="lock-closed-outline"></ion-icon>
+                            <input type="password" required id="password" placeholder=" ">
+                            <label for="">Password</label>
+                        </div>
+                        <div class="forget">
+                            <label for="">
+                                <input type="checkbox" class="styled-checkbox">
+                                <span class="checkbox"></span> 
+                                Remember Me
+                            </label>
+                            <a href="#">Forgot Password</a>
+                        </div>
+                        <button>Log in</button>
+                        <div class="register">
+                            <p>No tienes una cuenta? <a href="#">Registrate</a></p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <br><br>
+    </section>
+    <section id="quienes-somos">
+        <div id="white-box">
+            <h1><span class="text-gradient">Quienes Somos?</span></h1>
+            <div class="info-corporativa">
                 <div class="arrow-container">
                     <div class="left-arrow">&#10094;</div> <!-- Flecha izquierda -->
                     <div class="right-arrow">&#10095;</div> <!-- Flecha derecha -->
                 </div>
-                <img src="https://ascastro.sirv.com/Images/Utopia%20Planet.png" alt="UTOPIA planet">
                 <div class="text-overlay">
-                    <h3></h3>
+                    <h2></h2>
                     <p></p>
+                </div>
+                <img src="https://ascastro.sirv.com/Images/LOGO_OFICIAL_UTOPIA_FONDO_DEGRADADO-removebg-preview.png" alt="Utopia Logo" class="info-corporativa-img">
+            </div>
+            <img src="https://ascastro.sirv.com/Images/LOGO_OFICIAL_UTOPIA_FONDO_DEGRADADO-removebg-preview.png" alt="Utopia Logo" class="outside-content-img">
+        </div>
+        <br><br>
+    </section>
+    <section id="servicios">
+        <h2><span class="text-gradient">Nuestros Servicios</span></h2>
+        <div class="tarjetas-servicios">
+
+            <div class="tarjeta" onclick="toggleSubservicios('pagina-web')">
+                <h3>Página Web</h3>
+                <div class="subservicios" id="pagina-web">
+                    <ul>
+                        <li>Diseño Responsivo</li>
+                        <li>Desarrollo Front-end</li>
+                        <li>Desarrollo Back-end</li>
+                        <li>Integración de CMS</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="tarjeta" onclick="toggleSubservicios('marketing-digital')">
+                <h3>Marketing Digital</h3>
+                <div class="subservicios" id="marketing-digital">
+                    <ul>
+                        <li>Gestión de Redes Sociales</li>
+                        <li>Publicidad en Línea</li>
+                        <li>Email Marketing</li>
+                        <li>Marketing de Contenidos</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="tarjeta" onclick="toggleSubservicios('seo')">
+                <h3>SEO</h3>
+                <div class="subservicios" id="seo">
+                    <ul>
+                        <li>SEO On-Page</li>
+                        <li>SEO Off-Page</li>
+                        <li>Investigación de Palabras Clave</li>
+                        <li>Análisis de Competencia</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="tarjeta" onclick="toggleSubservicios('atencion-cliente')">
+                <h3>Atención al Cliente</h3>
+                <div class="subservicios" id="atencion-cliente">
+                    <ul>
+                        <li>Chat en Vivo</li>
+                        <li>Soporte Telefónico</li>
+                        <li>Gestión de Tickets</li>
+                        <li>Encuestas de Satisfacción</li>
+                    </ul>
                 </div>
             </div>
         </div>
+        <p>
+            Desarrollamos estrategias y herramientas de publicidad e imagen en base a las tendencias y<br>
+            movimientos del mercado actual, ofreciendo marketing efectivo y branding que<br>llame la 
+            atencion de tu cliente objetivo
+        </p>
     </section>
-
+    <br><br><br>
+    <section id="contacto">
+        <h2>Contacto</h2>
+    <p>Déjanos tus datos y nos pondremos en contacto contigo a la brevedad.</p>
+    <form id="form-contacto">
+        <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" name="nombre" required>
+        </div>
+        <div class="form-group">
+            <label for="correo">Correo Electrónico</label>
+            <input type="email" id="correo" name="correo" required>
+        </div>
+        <div class="form-group">
+            <label for="empresa">Empresa</label>
+            <input type="text" id="empresa" name="empresa">
+        </div>
+        <div class="form-group">
+            <label for="mensaje">Mensaje</label>
+            <textarea id="mensaje" name="mensaje" rows="4"></textarea>
+        </div>
+        <button type="submit">Enviar</button>
+    </form>
+    </section>
+    <br><br><br>
     <footer>
         <p>&copy; 2024 UTOPIA - Agencia de Publicidad Digital</p>
+        <div class="social-media">
+            <a href="https://instagram.com" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Instagram_logo_2022.svg/2048px-Instagram_logo_2022.svg.png" alt="Instagram"></a><p>Instagram</p>
+            <a href="https://instagram.com" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Facebook_logo_%28square%29.png/480px-Facebook_logo_%28square%29.png" alt="Instagram"></a><p>Facebook</p>
+        </div>
     </footer>
 </body>
 </html>

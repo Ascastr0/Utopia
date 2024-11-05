@@ -15,81 +15,64 @@ document.addEventListener("DOMContentLoaded", function() {
     ];
 
     let currentIndex = 0;
-    const titleElement = document.querySelector(".text-overlay h3");
+    let isAnimating = false;
+    const titleElement = document.querySelector(".text-overlay h2");
     const contentElement = document.querySelector(".text-overlay p");
     const leftArrow = document.querySelector(".left-arrow");
     const rightArrow = document.querySelector(".right-arrow");
 
-    // Función para actualizar el contenido según el índice
     function updateContent(index, direction) {
-        // Aplicar animación de deslizamiento hacia fuera según la dirección
-        if (direction === "right") {
-            titleElement.classList.add("slide-out-left");
-            contentElement.classList.add("slide-out-left");
-        } else {
-            titleElement.classList.add("slide-out-right");
-            contentElement.classList.add("slide-out-right");
-        }
+        if (isAnimating) return;
+        isAnimating = true;
 
-        // Esperar a que termine la animación antes de cambiar el contenido
+        const outClass = direction === "right" ? "slide-out-left" : "slide-out-right";
+        const inClass = direction === "right" ? "slide-in-right" : "slide-in-left";
+
+        titleElement.classList.add(outClass);
+        contentElement.classList.add(outClass);
+
         setTimeout(() => {
             titleElement.textContent = texts[index].title;
-            contentElement.innerHTML = texts[index].content;
+            contentElement.textContent = texts[index].content;
 
-            // Aplicar animación de deslizamiento hacia dentro según la dirección
-            if (direction === "right") {
-                titleElement.classList.remove("slide-out-left");
-                contentElement.classList.remove("slide-out-left");
-                titleElement.classList.add("slide-in-right");
-                contentElement.classList.add("slide-in-right");
-            } else {
-                titleElement.classList.remove("slide-out-right");
-                contentElement.classList.remove("slide-out-right");
-                titleElement.classList.add("slide-in-left");
-                contentElement.classList.add("slide-in-left");
-            }
-
-            // Eliminar clases de animación después de completar la animación
-            setTimeout(() => {
-                titleElement.classList.remove("slide-in-left", "slide-in-right");
-                contentElement.classList.remove("slide-in-left", "slide-in-right");
-            }, 500); // Tiempo igual a la duración de la animación
+            titleElement.classList.remove(outClass);
+            contentElement.classList.remove(outClass);
+            
+            titleElement.classList.add(inClass);
+            contentElement.classList.add(inClass);
 
             updateArrows();
-        }, 500); // Debe ser igual a la duración de la animación en CSS
+
+            setTimeout(() => {
+                titleElement.classList.remove(inClass);
+                contentElement.classList.remove(inClass);
+                isAnimating = false;
+            }, 500);
+        }, 500);
     }
 
     function updateArrows() {
-        if (currentIndex === 0) {
-            leftArrow.classList.add("disabled");
-        } else {
-            leftArrow.classList.remove("disabled");
-        }
-
-        if (currentIndex === texts.length - 1) {
-            rightArrow.classList.add("disabled");
-        } else {
-            rightArrow.classList.remove("disabled");
-        }
+        leftArrow.classList.toggle("disabled", currentIndex === 0);
+        rightArrow.classList.toggle("disabled", currentIndex === texts.length - 1);
     }
 
-    // Cargar el primer texto al cargar la página sin animación
+    // Inicialización
     titleElement.textContent = texts[currentIndex].title;
-    contentElement.innerHTML = texts[currentIndex].content;
-    updateArrows(); // Inicializa las flechas deshabilitadas si es necesario
+    contentElement.textContent = texts[currentIndex].content;
+    updateArrows();
 
-    // Flechas para navegar por los textos
     leftArrow.addEventListener("click", function() {
-        if (currentIndex > 0) {
+        if (currentIndex > 0 && !isAnimating) {
             currentIndex--;
-            updateContent(currentIndex, "left"); // Deslizar hacia la izquierda
+            updateContent(currentIndex, "left");
         }
     });
 
     rightArrow.addEventListener("click", function() {
-        if (currentIndex < texts.length - 1) {
+        if (currentIndex < texts.length - 1 && !isAnimating) {
             currentIndex++;
-            updateContent(currentIndex, "right"); // Deslizar hacia la derecha
+            updateContent(currentIndex, "right");
         }
     });
 });
+
